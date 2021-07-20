@@ -23,12 +23,13 @@ const UsuarioSchema = Schema ({
     rol:{
         type:String,
         required: true, 
+        default:'USER_ROLE'
         //enum: ['ADMIN_ROLE','USER_ROLE']
 
     }, 
     estado:{ //borrado lógico
         type: Boolean,
-        default:false
+        default:true
     }, goolge: {
         type: Boolean,
         default:false
