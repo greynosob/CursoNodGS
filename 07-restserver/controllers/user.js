@@ -66,13 +66,15 @@ const usuariosGet = async(req, res) => {
     // res.status(403).json({
 
      const {id} = req.params
-
+     //const {uid} = req.uid
+    // const usrAutenticated = req.usrAutenticated
+     
      const usuario = await Usuario.findByIdAndUpdate(id, {estado:false})
         //borrado físico
         //await Usuario.findByIdAndDelete(id)
 
      res.json({
-         usuario
+         usuario//, uid,usrAutenticated
      })
  }
 

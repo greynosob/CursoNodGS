@@ -17,9 +17,10 @@ const emailExiste = async (correo ='') => {
 }
 
 const ExisteUsuarioId = async (id) => {    
-    var myId = new mongoose.Types.ObjectId(id)
+    
+    var myId = mongoose.Types.ObjectId(id);//new mongoose.Types.ObjectId(id)
     console.log(`id ${id} myid ${myId}`)    
-    const existeId = await Usuario.findById ({ myId });    
+    const existeId = await Usuario.findById (myId);    
     console.log(`existeId ${existeId}`)
     if(!existeId){
         throw new Error(`El id ${id} no existe`)
