@@ -1,5 +1,4 @@
-const Role = require('../models/role')
-const Usuario = require('../models/usuario')
+const {Role,Usuario,Categoria, Producto } = require('../models')
 const mongoose = require('mongoose')
 
 const esRoleValido = async(rol='') => {
@@ -27,9 +26,33 @@ const ExisteUsuarioId = async (id) => {
     }
 }
 
+const ExisteCategoriaId= async (id) => {    
+    
+    var myId = mongoose.Types.ObjectId(id);//new mongoose.Types.ObjectId(id)
+    //console.log(`id ${id} myid ${myId}`)    
+    const existeId = await Categoria.findById (myId);    
+    //console.log(`existeId ${existeId}`)
+    if(!existeId){
+        throw new Error(`El id ${id} no existe`)
+    }
+}
+
+const ExisteProductoId= async (id) => {    
+    
+    var myId = mongoose.Types.ObjectId(id);//new mongoose.Types.ObjectId(id)
+    //console.log(`id ${id} myid ${myId}`)    
+    const existeId = await Producto.findById (myId);    
+    //console.log(`existeId ${existeId}`)
+    if(!existeId){
+        throw new Error(`El id ${id} no existe`)
+    }
+}
+
 module.exports = {
     esRoleValido,
     emailExiste,
-    ExisteUsuarioId
+    ExisteUsuarioId,
+    ExisteCategoriaId,
+    ExisteProductoId
 }
 
